@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4AEEA617427886007FE12F /* Cocoa.framework */; };
+		DC4AEEB117427886007FE12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEAF17427886007FE12F /* InfoPlist.strings */; };
+		DC4AEEB317427886007FE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEEB217427886007FE12F /* main.m */; };
+		DC4AEEB717427886007FE12F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEB517427886007FE12F /* Credits.rtf */; };
+		DC4AEEBA17427886007FE12F /* EverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEEB917427886007FE12F /* EverAppDelegate.m */; };
+		DC4AEEBD17427887007FE12F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEBB17427887007FE12F /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DC4AEEA317427886007FE12F /* Ever FilterGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ever FilterGenerator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC4AEEA617427886007FE12F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DC4AEEA917427886007FE12F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DC4AEEAA17427886007FE12F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DC4AEEAB17427886007FE12F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DC4AEEAE17427886007FE12F /* Ever FilterGenerator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ever FilterGenerator-Info.plist"; sourceTree = "<group>"; };
+		DC4AEEB017427886007FE12F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC4AEEB217427886007FE12F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DC4AEEB417427886007FE12F /* Ever FilterGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ever FilterGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		DC4AEEB617427886007FE12F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		DC4AEEB817427886007FE12F /* EverAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverAppDelegate.h; sourceTree = "<group>"; };
+		DC4AEEB917427886007FE12F /* EverAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverAppDelegate.m; sourceTree = "<group>"; };
+		DC4AEEBC17427887007FE12F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC4AEEA017427886007FE12F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC4AEE9A17427886007FE12F = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEAC17427886007FE12F /* Ever FilterGenerator */,
+				DC4AEEA517427886007FE12F /* Frameworks */,
+				DC4AEEA417427886007FE12F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC4AEEA417427886007FE12F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEA317427886007FE12F /* Ever FilterGenerator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC4AEEA517427886007FE12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEA617427886007FE12F /* Cocoa.framework */,
+				DC4AEEA817427886007FE12F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC4AEEA817427886007FE12F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEA917427886007FE12F /* AppKit.framework */,
+				DC4AEEAA17427886007FE12F /* CoreData.framework */,
+				DC4AEEAB17427886007FE12F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		DC4AEEAC17427886007FE12F /* Ever FilterGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEB817427886007FE12F /* EverAppDelegate.h */,
+				DC4AEEB917427886007FE12F /* EverAppDelegate.m */,
+				DC4AEEBB17427887007FE12F /* MainMenu.xib */,
+				DC4AEEAD17427886007FE12F /* Supporting Files */,
+			);
+			path = "Ever FilterGenerator";
+			sourceTree = "<group>";
+		};
+		DC4AEEAD17427886007FE12F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC4AEEAE17427886007FE12F /* Ever FilterGenerator-Info.plist */,
+				DC4AEEAF17427886007FE12F /* InfoPlist.strings */,
+				DC4AEEB217427886007FE12F /* main.m */,
+				DC4AEEB417427886007FE12F /* Ever FilterGenerator-Prefix.pch */,
+				DC4AEEB517427886007FE12F /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC4AEEA217427886007FE12F /* Ever FilterGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC4AEEC017427887007FE12F /* Build configuration list for PBXNativeTarget "Ever FilterGenerator" */;
+			buildPhases = (
+				DC4AEE9F17427886007FE12F /* Sources */,
+				DC4AEEA017427886007FE12F /* Frameworks */,
+				DC4AEEA117427886007FE12F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ever FilterGenerator";
+			productName = "Ever FilterGenerator";
+			productReference = DC4AEEA317427886007FE12F /* Ever FilterGenerator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC4AEE9B17427886007FE12F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Ever;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = com.ever;
+			};
+			buildConfigurationList = DC4AEE9E17427886007FE12F /* Build configuration list for PBXProject "Ever FilterGenerator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC4AEE9A17427886007FE12F;
+			productRefGroup = DC4AEEA417427886007FE12F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC4AEEA217427886007FE12F /* Ever FilterGenerator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC4AEEA117427886007FE12F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC4AEEB117427886007FE12F /* InfoPlist.strings in Resources */,
+				DC4AEEB717427886007FE12F /* Credits.rtf in Resources */,
+				DC4AEEBD17427887007FE12F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC4AEE9F17427886007FE12F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC4AEEB317427886007FE12F /* main.m in Sources */,
+				DC4AEEBA17427886007FE12F /* EverAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC4AEEAF17427886007FE12F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC4AEEB017427886007FE12F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DC4AEEB517427886007FE12F /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC4AEEB617427886007FE12F /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		DC4AEEBB17427887007FE12F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC4AEEBC17427887007FE12F /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC4AEEBE17427887007FE12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DC4AEEBF17427887007FE12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DC4AEEC117427887007FE12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
+				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DC4AEEC217427887007FE12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
+				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC4AEE9E17427886007FE12F /* Build configuration list for PBXProject "Ever FilterGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC4AEEBE17427887007FE12F /* Debug */,
+				DC4AEEBF17427887007FE12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC4AEEC017427887007FE12F /* Build configuration list for PBXNativeTarget "Ever FilterGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC4AEEC117427887007FE12F /* Debug */,
+				DC4AEEC217427887007FE12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC4AEE9B17427886007FE12F /* Project object */;
+}
