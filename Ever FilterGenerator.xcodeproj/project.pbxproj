@@ -7,15 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC0683571743F69800EE659D /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0683561743F69800EE659D /* GPUImage.framework */; };
+		DC068359174402A100EE659D /* BlendPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC068358174402A100EE659D /* BlendPanel.xib */; };
+		DC06835C1744032200EE659D /* BlendPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06835B1744032100EE659D /* BlendPanel.m */; };
+		DC14B5AC1742B7EF00D314B9 /* EverFilterCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC14B5AB1742B7EF00D314B9 /* EverFilterCellView.m */; };
+		DC1AAD7917428077003BE47C /* EverMainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1AAD7817428077003BE47C /* EverMainMenu.m */; };
+		DC1AAD7F17429EFB003BE47C /* EverFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1AAD7E17429EFB003BE47C /* EverFilters.m */; };
 		DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4AEEA617427886007FE12F /* Cocoa.framework */; };
 		DC4AEEB117427886007FE12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEAF17427886007FE12F /* InfoPlist.strings */; };
 		DC4AEEB317427886007FE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEEB217427886007FE12F /* main.m */; };
 		DC4AEEB717427886007FE12F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEB517427886007FE12F /* Credits.rtf */; };
 		DC4AEEBA17427886007FE12F /* EverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEEB917427886007FE12F /* EverAppDelegate.m */; };
 		DC4AEEBD17427887007FE12F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEBB17427887007FE12F /* MainMenu.xib */; };
+		DC4AEECB1742793A007FE12F /* EverMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEECA1742793A007FE12F /* EverMainWindow.m */; };
+		DC82DC2F174390E100B7C985 /* SimplePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC82DC2E174390E100B7C985 /* SimplePanel.xib */; };
+		DC82DC321743913500B7C985 /* SimplePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC311743913500B7C985 /* SimplePanel.m */; };
+		DC82DC341743A88800B7C985 /* LevelsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC82DC331743A88800B7C985 /* LevelsPanel.xib */; };
+		DC82DC371743AC4300B7C985 /* LevelsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC361743AC4300B7C985 /* LevelsPanel.m */; };
+		DC82DC391743C3C100B7C985 /* ChannelSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */; };
+		DC82DC3C1743C44400B7C985 /* ChannelSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DC6019E117441CE000F5072D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCA3F31C17239B6500E28AEC;
+			remoteInfo = GPUImage;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImageMac.xcodeproj; path = ../GPUImage/framework/GPUImageMac.xcodeproj; sourceTree = "<group>"; };
+		DC0683561743F69800EE659D /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage/framework/build/Release/GPUImage.framework; sourceTree = "<group>"; };
+		DC068358174402A100EE659D /* BlendPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlendPanel.xib; sourceTree = "<group>"; };
+		DC06835A1744032100EE659D /* BlendPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendPanel.h; sourceTree = "<group>"; };
+		DC06835B1744032100EE659D /* BlendPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendPanel.m; sourceTree = "<group>"; };
+		DC14B5AA1742B7EF00D314B9 /* EverFilterCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverFilterCellView.h; sourceTree = "<group>"; };
+		DC14B5AB1742B7EF00D314B9 /* EverFilterCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverFilterCellView.m; sourceTree = "<group>"; };
+		DC1AAD7717428077003BE47C /* EverMainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverMainMenu.h; sourceTree = "<group>"; };
+		DC1AAD7817428077003BE47C /* EverMainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverMainMenu.m; sourceTree = "<group>"; };
+		DC1AAD7D17429EFB003BE47C /* EverFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverFilters.h; sourceTree = "<group>"; };
+		DC1AAD7E17429EFB003BE47C /* EverFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverFilters.m; sourceTree = "<group>"; };
 		DC4AEEA317427886007FE12F /* Ever FilterGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ever FilterGenerator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4AEEA617427886007FE12F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DC4AEEA917427886007FE12F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +63,17 @@
 		DC4AEEB817427886007FE12F /* EverAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverAppDelegate.h; sourceTree = "<group>"; };
 		DC4AEEB917427886007FE12F /* EverAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverAppDelegate.m; sourceTree = "<group>"; };
 		DC4AEEBC17427887007FE12F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DC4AEEC91742793A007FE12F /* EverMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverMainWindow.h; sourceTree = "<group>"; };
+		DC4AEECA1742793A007FE12F /* EverMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverMainWindow.m; sourceTree = "<group>"; };
+		DC82DC2E174390E100B7C985 /* SimplePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimplePanel.xib; sourceTree = "<group>"; };
+		DC82DC301743913500B7C985 /* SimplePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePanel.h; sourceTree = "<group>"; };
+		DC82DC311743913500B7C985 /* SimplePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePanel.m; sourceTree = "<group>"; };
+		DC82DC331743A88800B7C985 /* LevelsPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelsPanel.xib; sourceTree = "<group>"; };
+		DC82DC351743AC4300B7C985 /* LevelsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelsPanel.h; sourceTree = "<group>"; };
+		DC82DC361743AC4300B7C985 /* LevelsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelsPanel.m; sourceTree = "<group>"; };
+		DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelSettingView.xib; sourceTree = "<group>"; };
+		DC82DC3A1743C44400B7C985 /* ChannelSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelSettingView.h; sourceTree = "<group>"; };
+		DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelSettingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0683571743F69800EE659D /* GPUImage.framework in Frameworks */,
 				DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +92,8 @@
 		DC4AEE9A17427886007FE12F = {
 			isa = PBXGroup;
 			children = (
+				DC0683561743F69800EE659D /* GPUImage.framework */,
+				DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */,
 				DC4AEEAC17427886007FE12F /* Ever FilterGenerator */,
 				DC4AEEA517427886007FE12F /* Frameworks */,
 				DC4AEEA417427886007FE12F /* Products */,
@@ -82,10 +130,30 @@
 		DC4AEEAC17427886007FE12F /* Ever FilterGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				DC4AEEAD17427886007FE12F /* Supporting Files */,
 				DC4AEEB817427886007FE12F /* EverAppDelegate.h */,
 				DC4AEEB917427886007FE12F /* EverAppDelegate.m */,
 				DC4AEEBB17427887007FE12F /* MainMenu.xib */,
-				DC4AEEAD17427886007FE12F /* Supporting Files */,
+				DC4AEEC91742793A007FE12F /* EverMainWindow.h */,
+				DC4AEECA1742793A007FE12F /* EverMainWindow.m */,
+				DC1AAD7717428077003BE47C /* EverMainMenu.h */,
+				DC1AAD7817428077003BE47C /* EverMainMenu.m */,
+				DC1AAD7D17429EFB003BE47C /* EverFilters.h */,
+				DC1AAD7E17429EFB003BE47C /* EverFilters.m */,
+				DC14B5AA1742B7EF00D314B9 /* EverFilterCellView.h */,
+				DC14B5AB1742B7EF00D314B9 /* EverFilterCellView.m */,
+				DC82DC2E174390E100B7C985 /* SimplePanel.xib */,
+				DC82DC301743913500B7C985 /* SimplePanel.h */,
+				DC82DC311743913500B7C985 /* SimplePanel.m */,
+				DC82DC331743A88800B7C985 /* LevelsPanel.xib */,
+				DC82DC351743AC4300B7C985 /* LevelsPanel.h */,
+				DC82DC361743AC4300B7C985 /* LevelsPanel.m */,
+				DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */,
+				DC82DC3A1743C44400B7C985 /* ChannelSettingView.h */,
+				DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */,
+				DC068358174402A100EE659D /* BlendPanel.xib */,
+				DC06835A1744032100EE659D /* BlendPanel.h */,
+				DC06835B1744032100EE659D /* BlendPanel.m */,
 			);
 			path = "Ever FilterGenerator";
 			sourceTree = "<group>";
@@ -100,6 +168,14 @@
 				DC4AEEB517427886007FE12F /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC6019DE17441CE000F5072D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC6019E217441CE000F5072D /* GPUImage.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,12 +218,28 @@
 			mainGroup = DC4AEE9A17427886007FE12F;
 			productRefGroup = DC4AEEA417427886007FE12F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DC6019DE17441CE000F5072D /* Products */;
+					ProjectRef = DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DC4AEEA217427886007FE12F /* Ever FilterGenerator */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DC6019E217441CE000F5072D /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = DC6019E117441CE000F5072D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DC4AEEA117427886007FE12F /* Resources */ = {
@@ -157,6 +249,10 @@
 				DC4AEEB117427886007FE12F /* InfoPlist.strings in Resources */,
 				DC4AEEB717427886007FE12F /* Credits.rtf in Resources */,
 				DC4AEEBD17427887007FE12F /* MainMenu.xib in Resources */,
+				DC82DC2F174390E100B7C985 /* SimplePanel.xib in Resources */,
+				DC82DC341743A88800B7C985 /* LevelsPanel.xib in Resources */,
+				DC82DC391743C3C100B7C985 /* ChannelSettingView.xib in Resources */,
+				DC068359174402A100EE659D /* BlendPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +265,14 @@
 			files = (
 				DC4AEEB317427886007FE12F /* main.m in Sources */,
 				DC4AEEBA17427886007FE12F /* EverAppDelegate.m in Sources */,
+				DC4AEECB1742793A007FE12F /* EverMainWindow.m in Sources */,
+				DC1AAD7917428077003BE47C /* EverMainMenu.m in Sources */,
+				DC1AAD7F17429EFB003BE47C /* EverFilters.m in Sources */,
+				DC14B5AC1742B7EF00D314B9 /* EverFilterCellView.m in Sources */,
+				DC82DC321743913500B7C985 /* SimplePanel.m in Sources */,
+				DC82DC371743AC4300B7C985 /* LevelsPanel.m in Sources */,
+				DC82DC3C1743C44400B7C985 /* ChannelSettingView.m in Sources */,
+				DC06835C1744032200EE659D /* BlendPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +367,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Downloads/GPUImage/GPUImage/build/Release\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
 				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
@@ -275,6 +383,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Downloads/GPUImage/GPUImage/build/Release\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
 				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
@@ -302,6 +414,7 @@
 				DC4AEEC217427887007FE12F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

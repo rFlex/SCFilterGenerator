@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EverMainWindow.h"
+#import "EverMainMenu.h"
 
 @interface EverAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet EverMainWindow *mainWindow;
+@property (assign) IBOutlet EverMainMenu *mainMenu;
 
 @end

@@ -17,6 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self.mainWindow buildThatThing];
     // Insert code here to initialize your application
 }
 
