@@ -26,6 +26,7 @@
 		DC82DC371743AC4300B7C985 /* LevelsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC361743AC4300B7C985 /* LevelsPanel.m */; };
 		DC82DC391743C3C100B7C985 /* ChannelSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */; };
 		DC82DC3C1743C44400B7C985 /* ChannelSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */; };
+		EE38AAA1174B9420008A62FF /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC49E40717443E1800BD68E3 /* GPUImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,19 @@
 			remoteInfo = GPUImage;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EE38AA9F174B9416008A62FF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EE38AAA1174B9420008A62FF /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DC068358174402A100EE659D /* BlendPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlendPanel.xib; sourceTree = "<group>"; };
@@ -186,6 +200,7 @@
 				DC4AEE9F17427886007FE12F /* Sources */,
 				DC4AEEA017427886007FE12F /* Frameworks */,
 				DC4AEEA117427886007FE12F /* Resources */,
+				EE38AA9F174B9416008A62FF /* CopyFiles */,
 			);
 			buildRules = (
 			);
