@@ -15,7 +15,7 @@
     
 }
 
--(void)buildCell:(EverFilter*)filter;
+- (void) buildCell:(EverFilter*)filter;
 
 @property(strong) id<EverFilterCellViewDelegate> delegate;
 @property(strong) NSTextField * effectTitle;
@@ -28,8 +28,8 @@
 
 @protocol EverFilterCellViewDelegate <NSObject>
 
-- (void)bypassBoxChanged:(EverFilterCellView*)cell;
-- (void)deletePressed:(EverFilterCellView*)cell;
-- (void)editPressed:(EverFilterCellView*)cell;
+- (void) bypassBoxChanged:(EverFilterCellView*)cell;
+- (void) deletePressed:(EverFilterCellView*)cell;
+- (void) editPressed:(EverFilterCellView*)cell;
 
 @end

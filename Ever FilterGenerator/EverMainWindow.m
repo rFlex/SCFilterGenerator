@@ -47,7 +47,6 @@
     [self addFilter:[[EverNormalBlendFilter alloc] init]];
     [self addFilter:[[EverLinearBlendFilter alloc] init]];
     
-    NSLog(@"Allow: %d", self.filterTableView.allowsColumnReordering);
     self.filterTableView.dataSource = self;
     self.filterTableView.delegate = self;    
 }
@@ -102,9 +101,11 @@
     [self disconnectPipeline];
     
     if (self.source != nil) {
+        CGSize processingSize = self.source.outputImageSize;
         GPUImageOutput * lastFilter = self.source;
         for (EverFilter * everFilter in self.filters) {
             if (everFilter.enabled) {
+                [everFilter.filter forceProcessingAtSize:processingSize];
                 [everFilter willRebuildPipeline];
                 [lastFilter addTarget:everFilter.filter atTextureLocation:0];
                 lastFilter = everFilter.filter;
@@ -214,8 +215,12 @@
     
     printf("%s\n", class_getName([output class]));
     
-    for (GPUImageOutput * current in output.targets) {
-        [self scanElement:current indent:indent + 1];
+    for (id current in output.targets) {
+        if ([current isKindOfClass:[GPUImageOutput class]]) {
+            [self scanElement:current indent:indent + 1];
+        } else {
+            
+        }
     }
 }
 
@@ -223,13 +228,12 @@
     if (self.source != nil) {
         
         for (EverFilter * everFilter in self.filters) {
-            NSLog(@"Current filter: %@", everFilter.name);
             if (everFilter.enabled) {
                 [everFilter willProcessImage];
             }
         }
         
-        [self scanTargets];
+        //[self scanTargets];
         [self.source processImage];
     }
 }
@@ -243,10 +247,10 @@
         if (result == NSFileHandlingPanelOKButton) {
             NSURL * document = [[panel URLs] objectAtIndex:0];
             
+            [self setOpenedFile:document];
             NSMutableArray * array = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfURL:document]];
                         
             if (array != nil) {
-                [self setOpenedFile:document];
                 for (EverFilter * filter in array) {
                     NSLog(@"Filter: %@", filter.name);
                     filter.manipulator = self;
@@ -296,6 +300,7 @@
 - (void) setOpenedFile:(NSURL*)file {
     self.file = file;
     self.title = [@"Ever FilterGenerator - " stringByAppendingString:[file lastPathComponent]];
+    [[NSFileManager defaultManager] changeCurrentDirectoryPath:[file.path stringByDeletingLastPathComponent]];
 }
 
 - (void) saveDocument:(id)sender {

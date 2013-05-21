@@ -328,9 +328,14 @@
     
     if (self) {
         NSString * file = [aDecoder decodeObjectForKey:@"fileName"];
-        self.picture = [[GPUImagePicture alloc] initWithURL:[[NSURL alloc] initWithString:file]];
-        [self.picture addTarget:self.filter];
-        [self.picture processImage];
+        if (file != nil) {
+            NSURL * fileUrl = [[NSURL alloc] initFileURLWithPath:file];
+            
+            self.picture = [[GPUImagePicture alloc] initWithURL:fileUrl];
+            [self.picture addTarget:self.filter];
+            [self.picture processImage];
+            self.file = file;
+        }
     }
     return self;
 }
@@ -344,6 +349,12 @@
 - (void) showParameterWindow {
     BlendPanel * panel = [BlendPanel startPanel:self];
     [panel setFile:self.file];
+    
+    if (self.panel != nil) {
+        [self.panel close];
+    }
+    
+    self.panel = panel;
 }
 
 - (void) willRebuildPipeline {
@@ -364,13 +375,13 @@
     }
 }
 
-- (void) imageChanged:(id)sender image:(NSImage *)image url:(NSURL *)url {
+- (void) imageChanged:(id)sender image:(NSImage *)image path:(NSString *)path {
     self.picture = [[GPUImagePicture alloc] initWithImage:image];
     [self.picture addTarget:self.filter];
     
     [self.picture processImage];
     
-    self.file = url.absoluteString;
+    self.file = path;
 }
 
 @end

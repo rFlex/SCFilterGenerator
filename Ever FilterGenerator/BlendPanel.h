@@ -11,17 +11,18 @@
 @protocol BlendPanelDelegate <NSObject>
 
 @optional
-- (void) imageChanged:(id)sender image:(NSImage*)image url:(NSURL*)url;
+- (void) imageChanged:(id)sender image:(NSImage*)image path:(NSString*)path;
 
 @end
 
 @interface BlendPanel : NSWindowController {
     
 }
-@property (unsafe_unretained) id<BlendPanelDelegate> delegate;
+
+@property (strong) id<BlendPanelDelegate> delegate;
 @property (weak) IBOutlet NSTextField *fileTextField;
 
-- (IBAction)openFilePressed:(id)sender;
+- (IBAction) openFilePressed:(id)sender;
 
 + (BlendPanel*) startPanel:(id<BlendPanelDelegate>)delegate;
 

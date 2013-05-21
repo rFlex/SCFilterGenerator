@@ -81,6 +81,7 @@
     
 }
 
+@property (strong, nonatomic) BlendPanel * panel;
 @property (strong, nonatomic) NSImage * image;
 @property (strong, nonatomic) GPUImagePicture * picture;
 @property (copy, nonatomic) NSString * file;
