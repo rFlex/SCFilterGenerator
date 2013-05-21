@@ -21,8 +21,8 @@
     return [super init];
 }
 
-
 -(void)buildThatThing {
+    _pipelineEnabled = YES;
     self.imageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     self.filters = [[NSMutableArray alloc] init];
@@ -103,20 +103,27 @@
     if (self.source != nil) {
         CGSize processingSize = self.source.outputImageSize;
         GPUImageOutput * lastFilter = self.source;
-        for (EverFilter * everFilter in self.filters) {
-            if (everFilter.enabled) {
-                [everFilter.filter forceProcessingAtSize:processingSize];
-                [everFilter willRebuildPipeline];
-                [lastFilter addTarget:everFilter.filter atTextureLocation:0];
-                lastFilter = everFilter.filter;
+            
+        if (_pipelineEnabled) {
+            for (EverFilter * everFilter in self.filters) {
+                if (everFilter.enabled) {
+                    [everFilter.filter forceProcessingAtSize:processingSize];
+                    [everFilter willRebuildPipeline];
+                    [lastFilter addTarget:everFilter.filter atTextureLocation:0];
+                    lastFilter = everFilter.filter;
+                }
             }
         }
+            
         [lastFilter addTarget:self.imageView];
         
-        for (EverFilter * everFilter in self.filters) {
-            if (everFilter.enabled) {
-                [everFilter didRebuildPipeline];
+        if (_pipelineEnabled) {
+            for (EverFilter * everFilter in self.filters) {
+                if (everFilter.enabled) {
+                    [everFilter didRebuildPipeline];
+                }
             }
+            
         }
         
         [self processImage];
@@ -421,5 +428,10 @@
 //    return [self _entityForRow:row];
 //}
 
+
+- (IBAction)switchButtonPressed:(id)sender {
+    _pipelineEnabled = self.switchButton.state;
+    [self rebuildPipeline];
+}
 
 @end

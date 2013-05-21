@@ -13,6 +13,7 @@
 
 @interface EverMainWindow : NSWindow<FilterManipulator, NSTableViewDelegate, NSTableViewDataSource, EverFilterCellViewDelegate> {
     GPUImagePicture * _source;
+    BOOL _pipelineEnabled;
 }
 
 - (void) buildThatThing;
@@ -31,5 +32,7 @@
 
 @property (strong, nonatomic) GPUImagePicture * source;
 @property (strong, nonatomic) NSMutableDictionary * availableFilters;
+@property (weak) IBOutlet NSButton *switchButton;
+- (IBAction)switchButtonPressed:(id)sender;
 
 @end
