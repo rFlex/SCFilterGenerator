@@ -18,8 +18,8 @@
 @interface BlendPanel : NSWindowController {
     
 }
-@property (assign) id<BlendPanelDelegate> delegate;
-@property (assign) IBOutlet NSTextField *fileTextField;
+@property (unsafe_unretained) id<BlendPanelDelegate> delegate;
+@property (weak) IBOutlet NSTextField *fileTextField;
 
 - (IBAction)openFilePressed:(id)sender;
 

@@ -22,13 +22,14 @@
 - (void) deletePressed:(EverFilterCellView*)cell;
 - (void) editPressed:(EverFilterCellView*)cell;
 
-@property (copy, nonatomic) NSURL * file;
-@property (assign, nonatomic) IBOutlet NSView *mainView;
-@property (assign, nonatomic) IBOutlet GPUImageView *imageView;
-@property (retain, nonatomic) NSMutableArray * filters;
+@property (strong, nonatomic) NSURL * file;
+@property (strong, nonatomic) NSMutableArray * filters;
 
-@property (retain, nonatomic) GPUImagePicture * source;
-@property (retain, nonatomic) NSMutableDictionary * availableFilters;
-@property (assign) IBOutlet NSTableView *filterTableView;
+@property (weak, nonatomic) IBOutlet NSView *mainView;
+@property (weak, nonatomic) IBOutlet GPUImageView *imageView;
+@property (weak) IBOutlet NSTableView *filterTableView;
+
+@property (strong, nonatomic) GPUImagePicture * source;
+@property (strong, nonatomic) NSMutableDictionary * availableFilters;
 
 @end

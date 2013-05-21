@@ -17,15 +17,10 @@
 @synthesize filters;
 @synthesize source;
 
--(id)init {
-    NSLog(@"Is it init?");
-    
+-(id)init {    
     return [super init];
 }
 
--(void)dealloc {
-    [super dealloc];
-}
 
 -(void)buildThatThing {
     self.imageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
@@ -44,7 +39,15 @@
     [self addFilter:[[EverLevelsFilter alloc] init]];
     [self addFilter:[[EverMultiplyBlendFilter alloc] init]];
     [self addFilter:[[EverOverlayBlendFilter alloc] init]];
+    [self addFilter:[[EverAddBlendFilter alloc] init]];
+    [self addFilter:[[EverSubtractBlendFilter alloc] init]];
+    [self addFilter:[[EverColorBurnBlendFilter alloc] init]];
+    [self addFilter:[[EverScreenBlendFilter alloc] init]];
+    [self addFilter:[[EverAlphaBlendFilter alloc] init]];
+    [self addFilter:[[EverNormalBlendFilter alloc] init]];
+    [self addFilter:[[EverLinearBlendFilter alloc] init]];
     
+    NSLog(@"Allow: %d", self.filterTableView.allowsColumnReordering);
     self.filterTableView.dataSource = self;
     self.filterTableView.delegate = self;    
 }
@@ -102,11 +105,18 @@
         GPUImageOutput * lastFilter = self.source;
         for (EverFilter * everFilter in self.filters) {
             if (everFilter.enabled) {
-                [lastFilter addTarget:everFilter.filter];
+                [everFilter willRebuildPipeline];
+                [lastFilter addTarget:everFilter.filter atTextureLocation:0];
                 lastFilter = everFilter.filter;
             }
         }
         [lastFilter addTarget:self.imageView];
+        
+        for (EverFilter * everFilter in self.filters) {
+            if (everFilter.enabled) {
+                [everFilter didRebuildPipeline];
+            }
+        }
         
         [self processImage];
     }
@@ -165,8 +175,61 @@
     [self attachFilterToPipeline:@"Multiply blend"];
 }
 
+- (void) addFilterAdd:(id)sender {
+    [self attachFilterToPipeline:@"Add blend"];
+}
+
+- (void) addFilterSubstract:(id)sender {
+    [self attachFilterToPipeline:@"Substract blend"];
+}
+
+- (void) addFilterColorBurn:(id)sender {
+    [self attachFilterToPipeline:@"Color burn blend"];
+}
+
+- (void) addFilterScreen:(id)sender {
+    [self attachFilterToPipeline:@"Screen blend"];
+}
+
+- (void) addFilterAlpha:(id)sender {
+    [self attachFilterToPipeline:@"Alpha blend"];
+}
+
+- (void) addFilterNormal:(id)sender {
+    [self attachFilterToPipeline:@"Normal blend"];
+}
+
+- (void) addFilterLinear:(id)sender {
+    [self attachFilterToPipeline:@"Linear burn blend"];
+}
+
+- (void) scanTargets {
+    [self scanElement:self.source indent:0];
+}
+
+- (void) scanElement:(GPUImageOutput*)output indent:(NSInteger)indent {
+    for (NSInteger i = 0; i < indent; i++) {
+        printf("    ");
+    }
+    
+    printf("%s\n", class_getName([output class]));
+    
+    for (GPUImageOutput * current in output.targets) {
+        [self scanElement:current indent:indent + 1];
+    }
+}
+
 -(void)processImage {
     if (self.source != nil) {
+        
+        for (EverFilter * everFilter in self.filters) {
+            NSLog(@"Current filter: %@", everFilter.name);
+            if (everFilter.enabled) {
+                [everFilter willProcessImage];
+            }
+        }
+        
+        [self scanTargets];
         [self.source processImage];
     }
 }
@@ -223,7 +286,6 @@
                 
                 [self rebuildPipeline];
                 
-                [picture release];
             } else {
                 NSLog(@"Picture is not valid");
             }
@@ -300,19 +362,59 @@
 - (void) bypassBoxChanged:(EverFilterCellView *)cell {
     cell.filter.enabled = cell.checkbox.state;
     [self rebuildPipeline];
-    
-    if (cell.filter.enabled) {
-        [cell.filter filterWokeUp];
-    }
 }
 
 - (BOOL) tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
     return YES;
 }
 
+
+
 - (NSDragOperation) tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
     return NSDragOperationEvery;
 }
+
+- (id<NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row {
+    NSLog(@"Asking for a pasteboard");
+    return nil;
+}
+
+- (IBAction)leftButtonPressed:(id)sender {
+    NSInteger row = [self.filterTableView selectedRow];
+    if (row != -1) {
+        if (row > 0) {
+            NSInteger othRow = row - 1;
+            id selected = [self.filters objectAtIndex:row];
+            id previous = [self.filters objectAtIndex:othRow];
+            
+            [self.filters replaceObjectAtIndex:othRow withObject:selected];
+            [self.filters replaceObjectAtIndex:row withObject:previous];
+            [self.filterTableView moveRowAtIndex:othRow toIndex:row];
+            [self rebuildPipeline];
+        }
+    }
+}
+
+- (IBAction)rightButtonPressed:(id)sender {
+    NSInteger row = [self.filterTableView selectedRow];
+    if (row != -1) {
+        if (row < [self.filters count] - 1) {
+            NSInteger othRow = row + 1;
+            id selected = [self.filters objectAtIndex:row];
+            id previous = [self.filters objectAtIndex:othRow];
+            
+            [self.filters replaceObjectAtIndex:othRow withObject:selected];
+            [self.filters replaceObjectAtIndex:row withObject:previous];
+            [self.filterTableView moveRowAtIndex:othRow toIndex:row];
+            [self rebuildPipeline];
+        }
+    }
+}
+
+//- (id <NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row {
+//    // Support for us being a dragging source
+//    return [self _entityForRow:row];
+//}
 
 
 @end

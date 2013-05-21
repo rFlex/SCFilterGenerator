@@ -36,20 +36,20 @@
 - (float) getMaxOutValue;
 - (void) setMaxOutValue:(float)value;
 
-@property (assign) id<ChannelSettingViewDelegate> delegate;
-@property (assign) IBOutlet NSTextField *channelName;
-@property (assign) IBOutlet NSColorWell *colorWell;
-@property (assign) IBOutlet NSTextField *minTextField;
-@property (assign) IBOutlet NSSlider *minSlider;
-@property (assign) IBOutlet NSTextField *gamTextField;
-@property (assign) IBOutlet NSSlider *gamSlider;
-@property (assign) IBOutlet NSTextField *maxTextField;
-@property (assign) IBOutlet NSSlider *maxSlider;
-@property (assign) IBOutlet NSTextField *minOutTextField;
-@property (assign) IBOutlet NSSlider *minOutSlider;
+@property (strong) id<ChannelSettingViewDelegate> delegate;
+@property (weak) IBOutlet NSTextField *channelName;
+@property (weak) IBOutlet NSColorWell *colorWell;
+@property (weak) IBOutlet NSTextField *minTextField;
+@property (weak) IBOutlet NSSlider *minSlider;
+@property (weak) IBOutlet NSTextField *gamTextField;
+@property (weak) IBOutlet NSSlider *gamSlider;
+@property (weak) IBOutlet NSTextField *maxTextField;
+@property (weak) IBOutlet NSSlider *maxSlider;
+@property (weak) IBOutlet NSTextField *minOutTextField;
+@property (weak) IBOutlet NSSlider *minOutSlider;
 
-@property (assign) IBOutlet NSTextField *maxOutTextField;
-@property (assign) IBOutlet NSSlider *maxOutSlider;
+@property (weak) IBOutlet NSTextField *maxOutTextField;
+@property (weak) IBOutlet NSSlider *maxOutSlider;
 
 - (IBAction)minTextFieldChanged:(id)sender;
 - (IBAction)minSliderChanged:(id)sender;

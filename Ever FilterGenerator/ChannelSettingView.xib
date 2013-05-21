@@ -48,6 +48,7 @@
 						<string key="NSFrame">{{74, 12}, {101, 5}}</string>
 						<reference key="NSSuperview" ref="610952620"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSOffsets">{0, 0}</string>
 						<object class="NSTextFieldCell" key="NSTitleCell">
@@ -301,7 +302,7 @@
 							<string key="NSContents"/>
 							<string key="NSCellIdentifier">_NS:1008</string>
 							<reference key="NSControlView" ref="1000847049"/>
-							<double key="NSMaxValue">1</double>
+							<double key="NSMaxValue">10</double>
 							<double key="NSMinValue">0.0</double>
 							<double key="NSValue">0.5</double>
 							<double key="NSAltIncValue">0.0</double>

@@ -16,7 +16,7 @@
 
 -(id)initWithName:(NSString *)filterName andFilter:(GPUImageFilter *)imageFilter {
     if (self) {
-        [super init];
+        if (!(self = [super init])) return nil;
         
         self.name = filterName;
         self.filter = imageFilter;
@@ -28,11 +28,15 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     
+    if (self) {
+        self.enabled = [aDecoder decodeBoolForKey:@"Enabled"];
+    }
+    
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    
+    [aCoder encodeBool:self.enabled forKey:@"Enabled"];
 }
 
 -(id) copyWithZone:(NSZone *)zone {
@@ -44,7 +48,15 @@
     return everFilter;
 }
 
-- (void) filterWokeUp {
+- (void) willRebuildPipeline {
+    
+}
+
+- (void) didRebuildPipeline {
+    
+}
+
+- (void) willProcessImage {
     
 }
 
@@ -310,11 +322,6 @@
 
 @implementation EverBlendFilter
 
-- (void)dealloc {
-    self.picture = nil;
-    self.image = nil;
-    [super dealloc];
-}
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -324,7 +331,6 @@
         self.picture = [[GPUImagePicture alloc] initWithURL:[[NSURL alloc] initWithString:file]];
         [self.picture addTarget:self.filter];
         [self.picture processImage];
-        
     }
     return self;
 }
@@ -340,7 +346,19 @@
     [panel setFile:self.file];
 }
 
-- (void) filterWokeUp {
+- (void) willRebuildPipeline {
+    if (self.picture != nil) {
+        [self.picture removeAllTargets];
+    }
+}
+
+- (void) didRebuildPipeline {
+    if (self.picture != nil) {
+        [self.picture addTarget:self.filter atTextureLocation:1];
+    }
+}
+
+- (void) willProcessImage {
     if (self.picture != nil) {
         [self.picture processImage];
     }
@@ -377,6 +395,90 @@
 
 - (EverFilter*) newInstance {
     return [[EverOverlayBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverAddBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Add blend" andFilter:[[GPUImageAddBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverAddBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverSubtractBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Substract blend" andFilter:[[GPUImageSubtractBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverSubtractBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverColorBurnBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Color burn blend" andFilter:[[GPUImageColorBurnBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverColorBurnBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverScreenBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Screen blend" andFilter:[[GPUImageScreenBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverScreenBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverAlphaBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Alpha blend" andFilter:[[GPUImageAlphaBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverAlphaBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverNormalBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Normal blend" andFilter:[[GPUImageNormalBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverNormalBlendFilter alloc] init];
+}
+
+@end
+
+@implementation EverLinearBlendFilter
+
+- (id) init {
+    return [super initWithName:@"Linear burn blend" andFilter:[[GPUImageLinearBurnBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverLinearBlendFilter alloc] init];
 }
 
 @end

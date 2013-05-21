@@ -54,6 +54,11 @@
     }
 }
 
+- (NSArray*)draggingImageComponents {
+    NSLog(@"Dragging image components!");
+    return nil;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     // Drawing code here.
 }

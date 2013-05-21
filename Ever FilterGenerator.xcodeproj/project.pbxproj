@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC0683571743F69800EE659D /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0683561743F69800EE659D /* GPUImage.framework */; };
 		DC068359174402A100EE659D /* BlendPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC068358174402A100EE659D /* BlendPanel.xib */; };
 		DC06835C1744032200EE659D /* BlendPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC06835B1744032100EE659D /* BlendPanel.m */; };
 		DC14B5AC1742B7EF00D314B9 /* EverFilterCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC14B5AB1742B7EF00D314B9 /* EverFilterCellView.m */; };
 		DC1AAD7917428077003BE47C /* EverMainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1AAD7817428077003BE47C /* EverMainMenu.m */; };
 		DC1AAD7F17429EFB003BE47C /* EverFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1AAD7E17429EFB003BE47C /* EverFilters.m */; };
+		DC49E40817443E2600BD68E3 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC49E40717443E1800BD68E3 /* GPUImage.framework */; };
 		DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4AEEA617427886007FE12F /* Cocoa.framework */; };
 		DC4AEEB117427886007FE12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC4AEEAF17427886007FE12F /* InfoPlist.strings */; };
 		DC4AEEB317427886007FE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4AEEB217427886007FE12F /* main.m */; };
@@ -29,9 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DC6019E117441CE000F5072D /* PBXContainerItemProxy */ = {
+		DC49E40617443E1800BD68E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */;
+			containerPortal = DC49E40217443E1800BD68E3 /* GPUImageMac.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCA3F31C17239B6500E28AEC;
 			remoteInfo = GPUImage;
@@ -39,8 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImageMac.xcodeproj; path = ../GPUImage/framework/GPUImageMac.xcodeproj; sourceTree = "<group>"; };
-		DC0683561743F69800EE659D /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../GPUImage/framework/build/Release/GPUImage.framework; sourceTree = "<group>"; };
 		DC068358174402A100EE659D /* BlendPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlendPanel.xib; sourceTree = "<group>"; };
 		DC06835A1744032100EE659D /* BlendPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendPanel.h; sourceTree = "<group>"; };
 		DC06835B1744032100EE659D /* BlendPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlendPanel.m; sourceTree = "<group>"; };
@@ -50,6 +48,7 @@
 		DC1AAD7817428077003BE47C /* EverMainMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverMainMenu.m; sourceTree = "<group>"; };
 		DC1AAD7D17429EFB003BE47C /* EverFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverFilters.h; sourceTree = "<group>"; };
 		DC1AAD7E17429EFB003BE47C /* EverFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverFilters.m; sourceTree = "<group>"; };
+		DC49E40217443E1800BD68E3 /* GPUImageMac.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImageMac.xcodeproj; path = ../GPUImage/framework/GPUImageMac.xcodeproj; sourceTree = "<group>"; };
 		DC4AEEA317427886007FE12F /* Ever FilterGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ever FilterGenerator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4AEEA617427886007FE12F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DC4AEEA917427886007FE12F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -81,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0683571743F69800EE659D /* GPUImage.framework in Frameworks */,
+				DC49E40817443E2600BD68E3 /* GPUImage.framework in Frameworks */,
 				DC4AEEA717427886007FE12F /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,11 +88,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC49E40317443E1800BD68E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC49E40717443E1800BD68E3 /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DC4AEE9A17427886007FE12F = {
 			isa = PBXGroup;
 			children = (
-				DC0683561743F69800EE659D /* GPUImage.framework */,
-				DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */,
 				DC4AEEAC17427886007FE12F /* Ever FilterGenerator */,
 				DC4AEEA517427886007FE12F /* Frameworks */,
 				DC4AEEA417427886007FE12F /* Products */,
@@ -111,6 +116,7 @@
 		DC4AEEA517427886007FE12F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC49E40217443E1800BD68E3 /* GPUImageMac.xcodeproj */,
 				DC4AEEA617427886007FE12F /* Cocoa.framework */,
 				DC4AEEA817427886007FE12F /* Other Frameworks */,
 			);
@@ -170,14 +176,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DC6019DE17441CE000F5072D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DC6019E217441CE000F5072D /* GPUImage.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,8 +218,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DC6019DE17441CE000F5072D /* Products */;
-					ProjectRef = DC0683501743F64500EE659D /* GPUImageMac.xcodeproj */;
+					ProductGroup = DC49E40317443E1800BD68E3 /* Products */;
+					ProjectRef = DC49E40217443E1800BD68E3 /* GPUImageMac.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -232,11 +230,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DC6019E217441CE000F5072D /* GPUImage.framework */ = {
+		DC49E40717443E1800BD68E3 /* GPUImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GPUImage.framework;
-			remoteRef = DC6019E117441CE000F5072D /* PBXContainerItemProxy */;
+			remoteRef = DC49E40617443E1800BD68E3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -366,6 +364,7 @@
 		DC4AEEC117427887007FE12F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,6 +374,7 @@
 				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
 				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -382,6 +382,7 @@
 		DC4AEEC217427887007FE12F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,6 +392,7 @@
 				GCC_PREFIX_HEADER = "Ever FilterGenerator/Ever FilterGenerator-Prefix.pch";
 				INFOPLIST_FILE = "Ever FilterGenerator/Ever FilterGenerator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

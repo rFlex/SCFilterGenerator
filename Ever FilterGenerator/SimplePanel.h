@@ -27,10 +27,10 @@
 
 + (SimplePanel*) startPanel:(id<SimplePanelDelegate>)delegate minValue:(float)minValue maxValue:(float)maxValue title:(NSString*)title;
 
-@property (assign, nonatomic) id<SimplePanelDelegate> delegate;
-@property (assign, nonatomic) IBOutlet NSSlider *slider;
-@property (assign, nonatomic) IBOutlet NSTextField *textField;
-@property (assign, nonatomic) IBOutlet NSSlider *sliderChanged;
-@property (assign, nonatomic) IBOutlet NSTextField *staticText;
+@property (strong, nonatomic) id<SimplePanelDelegate> delegate;
+@property (weak, nonatomic) IBOutlet NSSlider *slider;
+@property (weak, nonatomic) IBOutlet NSTextField *textField;
+@property (weak, nonatomic) IBOutlet NSSlider *sliderChanged;
+@property (weak, nonatomic) IBOutlet NSTextField *staticText;
 
 @end

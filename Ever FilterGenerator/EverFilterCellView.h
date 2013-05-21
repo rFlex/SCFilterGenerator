@@ -17,12 +17,12 @@
 
 -(void)buildCell:(EverFilter*)filter;
 
-@property(assign) id<EverFilterCellViewDelegate> delegate;
-@property(assign) NSTextField * effectTitle;
-@property(assign) NSButton * checkbox;
-@property(assign) NSButton * deleteButton;
-@property(assign) NSButton * editButton;
-@property(assign) EverFilter * filter;
+@property(strong) id<EverFilterCellViewDelegate> delegate;
+@property(strong) NSTextField * effectTitle;
+@property(strong) NSButton * checkbox;
+@property(strong) NSButton * deleteButton;
+@property(strong) NSButton * editButton;
+@property(strong) EverFilter * filter;
 
 @end
 

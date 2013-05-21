@@ -36,7 +36,7 @@
 - (id<ChannelSettingViewDelegate>) getAllDelegate;
 - (void) setAllDelegate:(id<ChannelSettingViewDelegate>)delegate;
 
-@property (assign) IBOutlet NSView *channelSettings;
+@property (weak) IBOutlet NSView *channelSettings;
 
 
 @end

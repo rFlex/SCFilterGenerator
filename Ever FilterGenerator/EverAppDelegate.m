@@ -10,10 +10,6 @@
 
 @implementation EverAppDelegate
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {

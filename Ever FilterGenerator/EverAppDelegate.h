@@ -12,7 +12,7 @@
 
 @interface EverAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet EverMainWindow *mainWindow;
-@property (assign) IBOutlet EverMainMenu *mainMenu;
+@property (weak) IBOutlet EverMainWindow *mainWindow;
+@property (weak) IBOutlet EverMainMenu *mainMenu;
 
 @end

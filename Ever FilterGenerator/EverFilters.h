@@ -24,15 +24,17 @@
     
 }
 
-- (void) filterWokeUp;
+- (void) willRebuildPipeline;
+- (void) didRebuildPipeline;
+- (void) willProcessImage;
 - (void) showParameterWindow;
 - (id) initWithName:(NSString*)filterName andFilter:(GPUImageFilter*)imageFilter;
 - (EverFilter*) newInstance;
 
 @property (assign, nonatomic) BOOL enabled;
-@property (retain, nonatomic) id<FilterManipulator> manipulator;
-@property (retain, nonatomic) GPUImageFilter * filter;
-@property (retain, nonatomic) NSString * name;
+@property (strong, nonatomic) id<FilterManipulator> manipulator;
+@property (strong, nonatomic) GPUImageFilter * filter;
+@property (strong, nonatomic) NSString * name;
 
 @end
 
@@ -59,7 +61,7 @@
 
 @interface AllChannelDelegate : ChannelDelegate
 
-@property (retain, nonatomic) LevelsPanel * panel;
+@property (strong, nonatomic) LevelsPanel * panel;
 
 @end
 
@@ -67,10 +69,10 @@
     
 }
 
-@property (retain, nonatomic) ChannelDelegate * redDelegate;
-@property (retain, nonatomic) ChannelDelegate * greenDelegate;
-@property (retain, nonatomic) ChannelDelegate * blueDelegate;
-@property (retain, nonatomic) ChannelDelegate * allDelegate;
+@property (strong, nonatomic) ChannelDelegate * redDelegate;
+@property (strong, nonatomic) ChannelDelegate * greenDelegate;
+@property (strong, nonatomic) ChannelDelegate * blueDelegate;
+@property (strong, nonatomic) ChannelDelegate * allDelegate;
 
 
 @end
@@ -79,21 +81,45 @@
     
 }
 
-@property (retain, nonatomic) NSImage * image;
-@property (assign, nonatomic) GPUImagePicture * picture;
+@property (strong, nonatomic) NSImage * image;
+@property (strong, nonatomic) GPUImagePicture * picture;
 @property (copy, nonatomic) NSString * file;
 
 @end
 
-@interface EverMultiplyBlendFilter : EverBlendFilter {
-    
-}
+@interface EverMultiplyBlendFilter : EverBlendFilter
 
 @end
 
-@interface EverOverlayBlendFilter : EverBlendFilter {
-    
-}
+@interface EverOverlayBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverAddBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverSubtractBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverColorBurnBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverScreenBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverAlphaBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverNormalBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverLinearBlendFilter : EverBlendFilter
 
 @end
 
@@ -103,7 +129,7 @@
 
 @property (assign, nonatomic) float minValue;
 @property (assign, nonatomic) float maxValue;
-@property (retain, nonatomic) SimplePanel * panel;
+@property (strong, nonatomic) SimplePanel * panel;
 
 - (float) getValue;
 - (void) setValue:(float)value;
