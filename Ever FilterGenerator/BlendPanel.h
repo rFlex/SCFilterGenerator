@@ -11,7 +11,7 @@
 @protocol BlendPanelDelegate <NSObject>
 
 @optional
-- (void) imageChanged:(id)sender image:(NSImage*)image path:(NSString*)path;
+- (void) imageChanged:(id)sender image:(NSImage*)image url:(NSURL*)path;
 
 @end
 

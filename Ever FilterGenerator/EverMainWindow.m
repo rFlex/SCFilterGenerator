@@ -11,14 +11,15 @@
 #import "EverMainWindow.h"
 #import "EverFilterCellView.h"
 #import "LevelsPanel.h"
+#import "EverFilterExporter.h"
 
 @implementation EverMainWindow
 
 @synthesize filters;
 @synthesize source;
 
--(id)init {    
-    return [super init];
+- (void) awakeFromNib {
+    [super awakeFromNib];
 }
 
 -(void)buildThatThing {
@@ -46,9 +47,11 @@
     [self addFilter:[[EverAlphaBlendFilter alloc] init]];
     [self addFilter:[[EverNormalBlendFilter alloc] init]];
     [self addFilter:[[EverLinearBlendFilter alloc] init]];
+    [self addFilter:[[EverExclusionFilter alloc] init]];
     
     self.filterTableView.dataSource = self;
-    self.filterTableView.delegate = self;    
+    self.filterTableView.delegate = self;
+    [self setOpenedFile:nil];
 }
 
 -(void)addFilter:(EverFilter*)everFilter {
@@ -137,6 +140,9 @@
 
 -(void)newDocument:(id)sender {
     [self clearPipeline];
+    [self setOpenedFile:nil];
+    [self.filterTableView reloadData];
+    [self rebuildPipeline];
 }
 
 -(void)addFilterBrightness:(id)sender {
@@ -211,6 +217,11 @@
     [self attachFilterToPipeline:@"Linear burn blend"];
 }
 
+- (void)addFilterExclusion:(id) sender {
+    [self attachFilterToPipeline:@"Exclusion blend"];
+}
+
+
 - (void) scanTargets {
     [self scanElement:self.source indent:0];
 }
@@ -269,6 +280,7 @@
                 [self.filterTableView reloadData];
                 
                 [self rebuildPipeline];
+                [self rebuildPipeline]; // Hack must find out why this is necessary
                 NSLog(@"Loaded!");
             } else {
                 NSLog(@"Failed to load");
@@ -296,7 +308,7 @@
                 self.source = picture;
                 
                 [self rebuildPipeline];
-                
+                [self rebuildPipeline]; // HACK Must find out why this is necessary
             } else {
                 NSLog(@"Picture is not valid");
             }
@@ -306,8 +318,13 @@
 
 - (void) setOpenedFile:(NSURL*)file {
     self.file = file;
-    self.title = [@"Ever FilterGenerator - " stringByAppendingString:[file lastPathComponent]];
-    [[NSFileManager defaultManager] changeCurrentDirectoryPath:[file.path stringByDeletingLastPathComponent]];
+    
+    if (file != nil) {
+        self.title = [@"Ever FilterGenerator - " stringByAppendingString:[file lastPathComponent]];
+        [[NSFileManager defaultManager] changeCurrentDirectoryPath:[file.path stringByDeletingLastPathComponent]];
+    } else {
+        self.title = @"Ever FilterGenerator - New Document";
+    }
 }
 
 - (void) saveDocument:(id)sender {
@@ -319,11 +336,11 @@
 }
 
 - (void) saveDocumentToURL:(NSURL*)url {
+    [self setOpenedFile:url];
     NSData* artistData = [NSKeyedArchiver archivedDataWithRootObject:self.filters];
     
     if (artistData != nil) {
         if ([artistData writeToURL:url atomically:YES]) {
-            [self setOpenedFile:url];
             NSLog(@"Success");
         } else {
             NSLog(@"Failed to save");
@@ -336,7 +353,7 @@
 
 - (void) saveDocumentTo:(id)sender {
     NSSavePanel * panel = [NSSavePanel savePanel];
-    [panel setNameFieldStringValue:@"myFilter"];
+    [panel setNameFieldStringValue:@"My gorgeous filter"];
     [panel setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"efl", nil]];
     
     [panel beginWithCompletionHandler:^(NSInteger result) {
@@ -423,11 +440,17 @@
     }
 }
 
-//- (id <NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row {
-//    // Support for us being a dragging source
-//    return [self _entityForRow:row];
-//}
-
+- (void) exportDocument:(id)sender {
+    NSSavePanel * panel = [NSSavePanel savePanel];
+    [panel setNameFieldStringValue:@"EverFilter"];
+    [panel setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"cs", nil]];
+    
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            [EverFilterExporter exportFilters:self.filters outputFile:[panel URL]];
+        }
+    }];
+}
 
 - (IBAction)switchButtonPressed:(id)sender {
     _pipelineEnabled = self.switchButton.state;

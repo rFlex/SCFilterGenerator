@@ -24,6 +24,7 @@
     
 }
 
+- (NSString*) getCSharpParameters:(NSString*)variableName;
 - (void) willRebuildPipeline;
 - (void) didRebuildPipeline;
 - (void) willProcessImage;
@@ -84,7 +85,7 @@
 @property (strong, nonatomic) BlendPanel * panel;
 @property (strong, nonatomic) NSImage * image;
 @property (strong, nonatomic) GPUImagePicture * picture;
-@property (copy, nonatomic) NSString * file;
+@property (copy, nonatomic) NSURL * file;
 
 @end
 
@@ -121,6 +122,10 @@
 @end
 
 @interface EverLinearBlendFilter : EverBlendFilter
+
+@end
+
+@interface EverExclusionFilter : EverBlendFilter
 
 @end
 

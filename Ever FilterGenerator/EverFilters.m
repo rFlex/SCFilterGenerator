@@ -60,6 +60,10 @@
     
 }
 
+- (NSString*) getCSharpParameters:(NSString *)variableName {
+    return nil;
+}
+
 - (EverFilter*) newInstance {
     return [[EverFilter alloc] initWithName:self.name andFilter:self.filter];
 }
@@ -314,14 +318,61 @@
     ((AllChannelDelegate*)self.allDelegate).panel = panel;
 }
 
+- (NSString*) getCSharpParameters:(NSString *)variableName {
+    GPUImageLevelsFilter * levelsFilter = (GPUImageLevelsFilter*)self.filter;
+    NSMutableString * output = [[NSMutableString alloc] init];
+    
+    [output appendFormat:@"%@.setRed(%ff, %ff, %ff, %ff, %ff);", variableName, [levelsFilter getRedMin], [levelsFilter getRedMid], [levelsFilter getRedMax], [levelsFilter getRedMinOut], [levelsFilter getRedMaxOut]];
+    [output appendFormat:@"%@.setGreen(%ff, %ff, %ff, %ff, %ff);", variableName, [levelsFilter getGreenMin], [levelsFilter getGreenMid], [levelsFilter getGreenMax], [levelsFilter getGreenMinOut], [levelsFilter getGreenMaxOut]];
+    [output appendFormat:@"%@.setBlue(%ff, %ff, %ff, %ff, %ff);", variableName, [levelsFilter getBlueMin], [levelsFilter getBlueMid], [levelsFilter getBlueMax], [levelsFilter getBlueMinOut], [levelsFilter getBlueMaxOut]];
+    
+    return output;
+}
+
 - (EverFilter*) newInstance {
     return [[EverLevelsFilter alloc] init];
 }
 
 @end
 
+@implementation NSString (Paths)
+
+- (NSString*)stringWithPathRelativeTo:(NSString*)anchorPath {
+    NSArray *pathComponents = [self pathComponents];
+    NSArray *anchorComponents = [anchorPath pathComponents];
+    
+    NSInteger componentsInCommon = MIN([pathComponents count], [anchorComponents count]);
+    for (NSInteger i = 0, n = componentsInCommon; i < n; i++) {
+        if (![[pathComponents objectAtIndex:i] isEqualToString:[anchorComponents objectAtIndex:i]]) {
+            componentsInCommon = i;
+            break;
+        }
+    }
+    
+    NSUInteger numberOfParentComponents = [anchorComponents count] - componentsInCommon;
+    NSUInteger numberOfPathComponents = [pathComponents count] - componentsInCommon;
+    
+    NSMutableArray *relativeComponents = [NSMutableArray arrayWithCapacity:
+                                          numberOfParentComponents + numberOfPathComponents];
+    for (NSInteger i = 0; i < numberOfParentComponents; i++) {
+        [relativeComponents addObject:@".."];
+    }
+    [relativeComponents addObjectsFromArray:
+     [pathComponents subarrayWithRange:NSMakeRange(componentsInCommon, numberOfPathComponents)]];
+    return [NSString pathWithComponents:relativeComponents];
+}
+
+@end
+
 @implementation EverBlendFilter
 
+- (id) initWithName:(NSString *)filterName andFilter:(GPUImageFilter *)imageFilter {
+    self = [super initWithName:filterName andFilter:imageFilter];
+    
+    [imageFilter forceProcessingAtSize:CGSizeMake(300, 300)];
+    
+    return self;
+}
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -332,9 +383,9 @@
             NSURL * fileUrl = [[NSURL alloc] initFileURLWithPath:file];
             
             self.picture = [[GPUImagePicture alloc] initWithURL:fileUrl];
-            [self.picture addTarget:self.filter];
+            [self.picture addTarget:self.filter atTextureLocation:1];
             [self.picture processImage];
-            self.file = file;
+            self.file = fileUrl;
         }
     }
     return self;
@@ -343,12 +394,32 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
     
-    [aCoder encodeObject:self.file forKey:@"fileName"];
+    [aCoder encodeObject:[self relativeString] forKey:@"fileName"];
+}
+
+- (NSString*) getCSharpParameters:(NSString *)variableName {
+    NSMutableString * output = [[NSMutableString alloc] init];
+    
+    [output appendFormat:@"{ UIImage image = UIImage.FromFile(\"%@\");", [self.file.path lastPathComponent]];
+    [output appendFormat:@"GPUImagePicture imagePicture = new GPUImagePicture(image);"];
+    [output appendFormat:@"imagePicture.AddTarget(%@, 1);", variableName];
+    [output appendFormat:@"imagePicture.ProcessImage();"];
+    [output appendFormat:@"}"];
+    [output appendFormat:@"%@.DisableSecondFrameCheck();", variableName];
+    
+    return output;
+}
+
+- (NSString*) relativeString {
+    return [self.file.path stringWithPathRelativeTo:[[NSFileManager defaultManager] currentDirectoryPath]];
 }
 
 - (void) showParameterWindow {
     BlendPanel * panel = [BlendPanel startPanel:self];
-    [panel setFile:self.file];
+    
+    if (self.file != nil) {
+        [panel setFile:[self relativeString]];
+    }
     
     if (self.panel != nil) {
         [self.panel close];
@@ -375,13 +446,13 @@
     }
 }
 
-- (void) imageChanged:(id)sender image:(NSImage *)image path:(NSString *)path {
+- (void) imageChanged:(id)sender image:(NSImage *)image url:(NSURL *)url {
     self.picture = [[GPUImagePicture alloc] initWithImage:image];
     [self.picture addTarget:self.filter];
     
     [self.picture processImage];
     
-    self.file = path;
+    self.file = url;
 }
 
 @end
@@ -494,6 +565,18 @@
 
 @end
 
+@implementation EverExclusionFilter
+
+- (id) init {
+    return [super initWithName:@"Exclusion blend" andFilter:[[GPUImageExclusionBlendFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverExclusionFilter alloc] init];
+}
+
+@end
+
 @implementation UniqueValueEverFilter
 
 - (id) initWithName:(NSString *)filterName andFilter:(GPUImageFilter *)imageFilter minValue:(float)aMinValue maxValue:(float)aMaxValue {
@@ -518,6 +601,14 @@
     [super encodeWithCoder:aCoder];
     
     [aCoder encodeFloat:[self getValue] forKey:@"UniqueValue"];
+}
+
+- (NSString*) getCSharpParameters:(NSString *)variableName {
+    NSMutableString * output = [[NSMutableString alloc] init];
+    
+    [output appendFormat:@"%@.%@ = %ff;", variableName, self.name, [self getValue]];
+    
+    return output;
 }
 
 - (void) showParameterWindow {
