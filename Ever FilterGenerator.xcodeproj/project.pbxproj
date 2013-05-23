@@ -26,6 +26,7 @@
 		DC82DC371743AC4300B7C985 /* LevelsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC361743AC4300B7C985 /* LevelsPanel.m */; };
 		DC82DC391743C3C100B7C985 /* ChannelSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */; };
 		DC82DC3C1743C44400B7C985 /* ChannelSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */; };
+		DCBEF7AF174E3E8300A0CAB9 /* Icon1.icns in Resources */ = {isa = PBXBuildFile; fileRef = DCBEF7AE174E3E8300A0CAB9 /* Icon1.icns */; };
 		EE2586DA174BB65900843845 /* EverFilterExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2586D9174BB65900843845 /* EverFilterExporter.m */; };
 		EE38AAA1174B9420008A62FF /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC49E40717443E1800BD68E3 /* GPUImage.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		DC82DC381743C3C100B7C985 /* ChannelSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelSettingView.xib; sourceTree = "<group>"; };
 		DC82DC3A1743C44400B7C985 /* ChannelSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelSettingView.h; sourceTree = "<group>"; };
 		DC82DC3B1743C44400B7C985 /* ChannelSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelSettingView.m; sourceTree = "<group>"; };
+		DCBEF7AE174E3E8300A0CAB9 /* Icon1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon1.icns; sourceTree = "<group>"; };
 		EE2586D8174BB65900843845 /* EverFilterExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverFilterExporter.h; sourceTree = "<group>"; };
 		EE2586D9174BB65900843845 /* EverFilterExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverFilterExporter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 		DC4AEE9A17427886007FE12F = {
 			isa = PBXGroup;
 			children = (
+				DCBEF7AE174E3E8300A0CAB9 /* Icon1.icns */,
 				DC4AEEAC17427886007FE12F /* Ever FilterGenerator */,
 				DC4AEEA517427886007FE12F /* Frameworks */,
 				DC4AEEA417427886007FE12F /* Products */,
@@ -271,6 +274,7 @@
 				DC82DC341743A88800B7C985 /* LevelsPanel.xib in Resources */,
 				DC82DC391743C3C100B7C985 /* ChannelSettingView.xib in Resources */,
 				DC068359174402A100EE659D /* BlendPanel.xib in Resources */,
+				DCBEF7AF174E3E8300A0CAB9 /* Icon1.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

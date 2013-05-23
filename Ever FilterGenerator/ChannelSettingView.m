@@ -46,41 +46,43 @@
 
 - (void) signalMinValueChanged {
     if ([self.delegate respondsToSelector:@selector(minValueChanged::)]) {
-        [self.delegate minValueChanged:self :self.minSlider.floatValue];
+        [self.delegate minValueChanged:self :[self getMinValue]];
     }
 }
 
 - (void) signalGammaValueChanged {
     if ([self.delegate respondsToSelector:@selector(gammaValueChanged::)]) {
-        [self.delegate gammaValueChanged:self :self.gamSlider.floatValue];
+        [self.delegate gammaValueChanged:self :[self getGammaValue]];
     }
 }
 
 - (void) signalMaxValueChanged {
     if ([self.delegate respondsToSelector:@selector(maxValueChanged::)]) {
-        [self.delegate maxValueChanged:self :self.maxSlider.floatValue];
+        [self.delegate maxValueChanged:self :[self getMaxValue]];
     }
 }
 
 - (void) signalMinOutValueChanged {
     if ([self.delegate respondsToSelector:@selector(minOutValueChanged::)]) {
-        [self.delegate minOutValueChanged:self :self.minOutSlider.floatValue];
+        [self.delegate minOutValueChanged:self :[self getMinOutValue]];
     }
 }
 
 - (void) signalMaxOutValueChanged {
     if ([self.delegate respondsToSelector:@selector(maxOutValueChanged::)]) {
-        [self.delegate maxOutValueChanged:self :self.maxOutSlider.floatValue];
+        [self.delegate maxOutValueChanged:self :[self getMaxOutValue]];
     }
 }
 
 - (float) getMinValue {
-    return self.minSlider.floatValue;
+    return self.minSlider.floatValue / self.minSlider.maxValue;
 }
 
 - (void) setMinValue:(float)value {
-    self.minSlider.floatValue = value;
-    self.minTextField.floatValue = self.minSlider.floatValue;
+    NSInteger intValue = (NSInteger)(value * self.minSlider.maxValue);
+    
+    self.minSlider.integerValue = intValue;
+    self.minTextField.intValue = self.minSlider.integerValue;
 }
 
 - (float) getGammaValue {
@@ -93,39 +95,45 @@
 }
 
 - (float) getMaxValue {
-    return self.maxSlider.floatValue;
+    return self.maxSlider.floatValue / self.maxSlider.maxValue;
 }
 
 - (void) setMaxValue:(float)value {
-    self.maxSlider.floatValue = value;
-    self.maxTextField.floatValue = self.maxSlider.floatValue;
+    NSInteger intValue = (NSInteger)(value * self.maxSlider.maxValue);
+    
+    self.maxSlider.integerValue = intValue;
+    self.maxTextField.integerValue = self.maxSlider.integerValue;
 }
 
 - (float) getMinOutValue {
-    return self.minOutSlider.floatValue;
+    return self.minOutSlider.floatValue / self.minOutSlider.maxValue;
 }
 
 - (void) setMinOutValue:(float)value {
-    self.minOutSlider.floatValue = value;
-    self.minOutTextField.floatValue = self.minOutSlider.floatValue;
+    NSInteger intValue = (NSInteger)(value * self.minOutSlider.maxValue);
+
+    self.minOutSlider.integerValue = intValue;
+    self.minOutTextField.integerValue = self.minOutSlider.integerValue;
 }
 
 - (float) getMaxOutValue {
-    return self.maxOutSlider.floatValue;
+    return self.maxOutSlider.floatValue / self.maxOutSlider.maxValue;
 }
 
 - (void) setMaxOutValue:(float)value {
-    self.maxOutSlider.floatValue = value;
-    self.maxOutTextField.floatValue = self.maxOutSlider.floatValue;
+    NSInteger intValue = (NSInteger)(value * self.maxOutSlider.maxValue);
+    
+    self.maxOutSlider.integerValue = intValue;
+    self.maxOutTextField.integerValue = self.maxOutSlider.integerValue;
 }
 
 - (IBAction)minTextFieldChanged:(id)sender {
-    [self setMinValue:self.minTextField.floatValue];
+    [self setMinValue:self.minTextField.floatValue / self.maxSlider.maxValue];
     [self signalMinValueChanged];
 }
 
 - (IBAction)minSliderChanged:(id)sender {
-    [self setMinValue:self.minSlider.floatValue];
+    [self setMinValue:self.minSlider.floatValue / self.minSlider.maxValue];
     [self signalMinValueChanged];
 }
 
@@ -140,32 +148,32 @@
 }
 
 - (IBAction)maxTextFieldChanged:(id)sender {
-    [self setMaxValue:self.maxTextField.floatValue];
+    [self setMaxValue:self.maxTextField.floatValue / self.maxSlider.maxValue];
     [self signalMaxValueChanged];
 }
 
 - (IBAction)maxSliderChanged:(id)sender {
-    [self setMaxValue:self.maxSlider.floatValue];
+    [self setMaxValue:self.maxSlider.floatValue / self.maxSlider.maxValue];
     [self signalMaxValueChanged];
 }
 
 - (IBAction)minOutTextFieldChanged:(id)sender {
-    [self setMinOutValue:self.minOutTextField.floatValue];
+    [self setMinOutValue:self.minOutTextField.floatValue / self.minOutSlider.maxValue];
     [self signalMinOutValueChanged];
 }
 
 - (IBAction)minOutSliderChanged:(id)sender {
-    [self setMinOutValue:self.minOutSlider.floatValue];
+    [self setMinOutValue:self.minOutSlider.floatValue / self.minOutSlider.maxValue];
     [self signalMinOutValueChanged];
 }
 
 - (IBAction)maxOutTextFieldChanged:(id)sender {
-    [self setMaxOutValue:self.maxOutTextField.floatValue];
+    [self setMaxOutValue:self.maxOutTextField.floatValue / self.maxOutSlider.maxValue];
     [self signalMaxOutValueChanged];
 }
 
 - (IBAction)maxOutSliderChanged:(id)sender {
-    [self setMaxOutValue:self.maxOutSlider.floatValue];
+    [self setMaxOutValue:self.maxOutSlider.floatValue / self.maxOutSlider.maxValue];
     [self signalMaxOutValueChanged];
 }
 @end

@@ -64,6 +64,18 @@
     return nil;
 }
 
+- (NSString*) getObjCParameters:(NSString *)variableName {
+    return nil;
+}
+
+- (NSString*) getObjCVariables:(NSString*)variableName {
+    return nil;
+}
+
+- (NSString*) getObjCPrepareForCapture:(NSString *)variableName {
+    return nil;
+}
+
 - (EverFilter*) newInstance {
     return [[EverFilter alloc] initWithName:self.name andFilter:self.filter];
 }
@@ -329,6 +341,17 @@
     return output;
 }
 
+- (NSString*) getObjCParameters:(NSString *)variableName {
+    GPUImageLevelsFilter * levelsFilter = (GPUImageLevelsFilter*)self.filter;
+    NSMutableString * output = [[NSMutableString alloc] init];
+    
+    [output appendFormat:@"[%@ setRedMin:%f gamma:%f max:%f minOut:%f maxOut:%f];", variableName, [levelsFilter getRedMin], [levelsFilter getRedMid], [levelsFilter getRedMax], [levelsFilter getRedMinOut], [levelsFilter getRedMaxOut]];
+    [output appendFormat:@"[%@ setGreenMin:%f gamma:%f max:%f minOut:%f maxOut:%f];", variableName, [levelsFilter getGreenMin], [levelsFilter getGreenMid], [levelsFilter getGreenMax], [levelsFilter getGreenMinOut], [levelsFilter getGreenMaxOut]];
+    [output appendFormat:@"[%@ setBlueMin:%f gamma:%f max:%f minOut:%f maxOut:%f];", variableName, [levelsFilter getBlueMin], [levelsFilter getBlueMid], [levelsFilter getBlueMax], [levelsFilter getBlueMinOut], [levelsFilter getBlueMaxOut]];
+    
+    return output;
+}
+
 - (EverFilter*) newInstance {
     return [[EverLevelsFilter alloc] init];
 }
@@ -408,6 +431,28 @@
     [output appendFormat:@"%@.DisableSecondFrameCheck();", variableName];
     
     return output;
+}
+
+- (NSString*) getObjCVariables:(NSString *)variableName {
+    return [[NSString alloc] initWithFormat:@"GPUImagePicture * _%@_picture;", variableName];
+}
+
+- (NSString*) getObjCParameters:(NSString *)variableName {
+    NSMutableString * output = [[NSMutableString alloc] init];
+    
+    NSString * gpuImagePicture = [[NSString alloc] initWithFormat:@"_%@_picture", variableName];
+    
+    [output appendFormat:@"UIImage * image = [UIImage imageNamed:@\"%@\"];", [self.file.path lastPathComponent]];
+    [output appendFormat:@"if (image != nil) { %@ = [[GPUImagePicture alloc] initWithImage:image];", gpuImagePicture];
+    [output appendFormat:@"[%@ addTarget:%@ atTextureLocation:1];", gpuImagePicture, variableName];
+    [output appendFormat:@"[%@ processImage];}", gpuImagePicture];
+    [output appendFormat:@"[%@ disableSecondFrameCheck];", variableName];
+    
+    return output;
+}
+
+- (NSString*) getObjCPrepareForCapture:(NSString *)variableName {
+    return [[NSString alloc] initWithFormat:@"[_%@_picture processImage];", variableName];
 }
 
 - (NSString*) relativeString {
@@ -609,6 +654,10 @@
     [output appendFormat:@"%@.%@ = %ff;", variableName, self.name, [self getValue]];
     
     return output;
+}
+
+- (NSString*) getObjCParameters:(NSString *)variableName {
+    return [[NSString alloc] initWithFormat:@"%@.%@ = %f;", variableName, [self.name lowercaseString], [self getValue]];
 }
 
 - (void) showParameterWindow {

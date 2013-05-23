@@ -25,6 +25,10 @@
 }
 
 - (NSString*) getCSharpParameters:(NSString*)variableName;
+- (NSString*) getObjCParameters:(NSString*)variableName;
+- (NSString*) getObjCVariables:(NSString*)variableName;
+- (NSString*) getObjCPrepareForCapture:(NSString*)variableName;
+
 - (void) willRebuildPipeline;
 - (void) didRebuildPipeline;
 - (void) willProcessImage;

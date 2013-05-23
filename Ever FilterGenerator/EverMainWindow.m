@@ -443,7 +443,6 @@
 - (void) exportDocument:(id)sender {
     NSSavePanel * panel = [NSSavePanel savePanel];
     [panel setNameFieldStringValue:@"EverFilter"];
-    [panel setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"cs", nil]];
     
     [panel beginWithCompletionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
@@ -454,6 +453,11 @@
 
 - (IBAction)switchButtonPressed:(id)sender {
     _pipelineEnabled = self.switchButton.state;
+    [self rebuildPipeline];
+}
+
+- (void) forceRefresh:(id)sender {
+    [self.filterTableView reloadData];
     [self rebuildPipeline];
 }
 
