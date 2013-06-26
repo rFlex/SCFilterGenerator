@@ -133,6 +133,10 @@
 
 @end
 
+@interface EverImageLookupFilter : EverBlendFilter
+
+@end
+
 @interface UniqueValueEverFilter : EverFilter<SimplePanelDelegate> {
     
 }

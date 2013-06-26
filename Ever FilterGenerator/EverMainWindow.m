@@ -47,6 +47,7 @@
     [self addFilter:[[EverAlphaBlendFilter alloc] init]];
     [self addFilter:[[EverNormalBlendFilter alloc] init]];
     [self addFilter:[[EverLinearBlendFilter alloc] init]];
+    [self addFilter:[[EverImageLookupFilter alloc] init]];
     [self addFilter:[[EverExclusionFilter alloc] init]];
     
     self.filterTableView.dataSource = self;
@@ -221,6 +222,9 @@
     [self attachFilterToPipeline:@"Exclusion blend"];
 }
 
+- (void) addFilterLookup:(id) sender {
+    [self attachFilterToPipeline:@"Lookup image"];
+}
 
 - (void) scanTargets {
     [self scanElement:self.source indent:0];

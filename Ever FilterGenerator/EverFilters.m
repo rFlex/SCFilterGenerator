@@ -622,6 +622,18 @@
 
 @end
 
+@implementation EverImageLookupFilter
+
+- (id) init {
+    return [super initWithName:@"Lookup image" andFilter:[[GPUImageLookupFilter alloc] init]];
+}
+
+- (EverFilter*) newInstance {
+    return [[EverImageLookupFilter alloc] init];
+}
+
+@end
+
 @implementation UniqueValueEverFilter
 
 - (id) initWithName:(NSString *)filterName andFilter:(GPUImageFilter *)imageFilter minValue:(float)aMinValue maxValue:(float)aMaxValue {

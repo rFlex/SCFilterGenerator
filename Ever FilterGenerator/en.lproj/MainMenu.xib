@@ -385,6 +385,24 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="747399744">
+									<reference key="NSMenu" ref="466310130"/>
+									<string key="NSTitle">Lookup Image</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="933414241">
+									<reference key="NSMenu" ref="466310130"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 								<object class="NSMenuItem" id="699131098">
 									<reference key="NSMenu" ref="466310130"/>
 									<string key="NSTitle">Multiply blend</string>
@@ -891,6 +909,7 @@
 									<string key="NSFrame">{{145, 9}, {64, 29}}</string>
 									<reference key="NSSuperview" ref="232109199"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:1622</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="179467320">
@@ -1253,6 +1272,14 @@
 					<int key="connectionID">842</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addFilterLookup:</string>
+						<reference key="source" ref="1014"/>
+						<reference key="destination" ref="747399744"/>
+					</object>
+					<int key="connectionID">847</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">mainView</string>
 						<reference key="source" ref="972006081"/>
@@ -1609,6 +1636,8 @@
 							<reference ref="579966244"/>
 							<reference ref="838647471"/>
 							<reference ref="753377934"/>
+							<reference ref="747399744"/>
+							<reference ref="933414241"/>
 						</array>
 						<reference key="parent" ref="586577488"/>
 					</object>
@@ -2098,6 +2127,16 @@
 						<reference key="object" ref="70534452"/>
 						<reference key="parent" ref="789758025"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">845</int>
+						<reference key="object" ref="747399744"/>
+						<reference key="parent" ref="466310130"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">846</int>
+						<reference key="object" ref="933414241"/>
+						<reference key="parent" ref="466310130"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2206,13 +2245,15 @@
 				<string key="840.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="841.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="844.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="845.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="846.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">844</int>
+			<int key="maxID">847</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2311,6 +2352,7 @@
 						<string key="addFilterGaussian:">id</string>
 						<string key="addFilterLevel:">id</string>
 						<string key="addFilterLinear:">id</string>
+						<string key="addFilterLookup:">id</string>
 						<string key="addFilterMultiply:">id</string>
 						<string key="addFilterNormal:">id</string>
 						<string key="addFilterOverlay:">id</string>
@@ -2367,6 +2409,10 @@
 						</object>
 						<object class="IBActionInfo" key="addFilterLinear:">
 							<string key="name">addFilterLinear:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addFilterLookup:">
+							<string key="name">addFilterLookup:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="addFilterMultiply:">
